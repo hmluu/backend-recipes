@@ -2,8 +2,12 @@ const knex = require('./knex');
 //bringing the connection not requiring knex
 
 module.exports = {
-  getAllRecipes(){
-    return knex('recipes');
+  getAllRecipes(query){ 
+    const knexQuery = knex('recipes');
+    if(query.title) {
+      knexQuery.where('title', 'like', `%${query.title}%`);
+    }
+    return knexQuery;
   },
   getOne(id){
     return knex('recipes').where('id', id).first();

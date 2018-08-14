@@ -18,7 +18,8 @@ function validRecipe(recipe){
 }
 
 router.get('/', (req, res) => {
-  queries.getAllRecipes().then(recipes => {
+  const {title} = req.query;
+  queries.getAllRecipes({title}).then(recipes => {
     res.json(recipes);
   });
 });
