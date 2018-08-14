@@ -1,6 +1,6 @@
 
 exports.seed = function(knex) {
-  return knex.raw('ALTER SEQUENCE recipes_id_seq RESTART with 5')
+  return knex.raw('ALTER SEQUENCE recipes_id_seq RESTART with 6')
     .then(() => {
       return knex('recipes').del()
         .then(() => {
