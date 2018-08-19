@@ -12,7 +12,7 @@ function isValidID(req, res, next){
 function validRecipe(recipe){
   const hasTitle = typeof recipe.title == 'string' && recipe.title.trim() != '';
   const hasURL = typeof recipe.url == 'string' && recipe.url.trim() != '';
-  const hasIngredients = typeof recipe.number_of_ingredients != isNaN && recipe.number_of_ingredients.trim() != '';
+  const hasIngredients = !isNaN(recipe.number_of_ingredients) && Number(recipe.number_of_ingredients) >= 3;
   const hasInstructions = typeof recipe.instructions == 'string' && recipe.instructions.trim() != '';
   return hasTitle && hasURL && hasIngredients && hasInstructions;
 }
